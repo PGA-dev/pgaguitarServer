@@ -11,10 +11,6 @@ const guitarSchema = new Schema({
         type: String,
         required: true
     },
-    featured: {
-        type: String,
-        required: false
-    },
     pageUrl: {
         type: String,
         required: true

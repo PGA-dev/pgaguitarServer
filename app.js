@@ -6,9 +6,8 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-const campsiteRouter = require('./routes/campsiteRouter');
-// const promotionRouter = require('./routes/promotionRouter');
-// const partnerRouter = require('./routes/partnerRouter');
+const guitarRouter = require('./models/guitar')
+
 
 const mongoose = require('mongoose');
 const url = 'mongodb://127.0.0.1:27021/pgaguitar';
@@ -37,9 +36,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/campsites', campsiteRouter);
-// app.use('/promotions', promotionRouter);
-// app.use('/partners', partnerRouter);
+app.use('/guitars', guitarRouter);
+
 
 
 // catch 404 and forward to error handler
