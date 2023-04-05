@@ -2,7 +2,7 @@ const express = require('express');
 const Guitar = require('../models/guitar');
 
 const guitardetailRouter = express.Router();
-//not finished -- must update for guitarstats before
+//not finished -- must update for guitarstats before -- may merge guitar and guitardetail for one big http nightmare
 
 //Basic campsite routing
 guitardetailRouter.route('/')
