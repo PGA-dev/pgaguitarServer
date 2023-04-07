@@ -3,8 +3,6 @@ const Contact = require('../models/contact');
 
 const contactRouter = express.Router();
 
-//not finished -- must update for guitarstats before -- may merge guitar and guitardetail for one big http nightmare
-
 
 //guitar routing for Guitar Directory Page
 contactRouter.route('/')
@@ -42,7 +40,7 @@ contactRouter.route('/')
 });
 
 //guitar Id for Guitar Detail Page
-contactRouter.route('/:guitarId')
+contactRouter.route('/:contactId')
 .get((req, res, next) => {
     Contact.findById(req.params.contactId)
     .then(contact => {

@@ -6,8 +6,8 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-//const guitarRouter = require('./models/guitar')
-const contactRouter = require('./models/contact')
+//const guitarRouter = require('./routes/guitarRouter')
+const contactRouter = require('./routes/contactRouter')
 
 
 const mongoose = require('mongoose');
