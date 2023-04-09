@@ -2,10 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const contactSchema = new Schema({
-    id: {
-        type: Number,
-        required: true
-    },
     firstname: {
         type: String,
         required: true
@@ -30,7 +26,7 @@ const contactSchema = new Schema({
     },
     feedback: {
         type: String,
-        required: false
+        required: true
     },
 }, {
     timestamps: true

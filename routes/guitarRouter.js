@@ -141,13 +141,13 @@ guitarRouter.route('/:guitarId/guitarstat')
     .catch(err => next(err));
 });
 
-guitarRouter.route('/:guitarId/guitarstat/guitarstat2')
+// guitarRouter.route('/:guitarId/guitarstat/guitarstat2')
 
-guitarRouter.route('/:guitarId/guitarstat/guitarstat2/guitarstat3')
+// guitarRouter.route('/:guitarId/guitarstat/guitarstat2/guitarstat3')
 
-guitarRouter.route('/:guitarId/guitarstat/guitarstat2/guitarstat3/guitarstat4')
+// guitarRouter.route('/:guitarId/guitarstat/guitarstat2/guitarstat3/guitarstat4')
 
-guitarRouter.route('/:guitarId/guitarstat/guitarstat2/guitarstat3/guitarstat4/guitarstat5')
+// guitarRouter.route('/:guitarId/guitarstat/guitarstat2/guitarstat3/guitarstat4/guitarstat5')
 
 
 
