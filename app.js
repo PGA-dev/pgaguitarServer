@@ -7,9 +7,10 @@ var cors = require('cors');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-const linksRouter = require('./routes/linksRouter')
-const contactRouter = require('./routes/contactRouter')
-
+const linksRouter = require('./routes/linksRouter');
+const contactRouter = require('./routes/contactRouter');
+const frontitemsRouter = require('./routes/frontitemsRouter');
+//const guitarRouter = require('./routes/guitarRouter');
 
 const mongoose = require('mongoose');
 const url = 'mongodb://127.0.0.1:27021/pgaguitar';
@@ -38,9 +39,11 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+//app.use('/guitar', guitarRouter);
 app.use('/users', usersRouter);
 app.use('/links', linksRouter);
 app.use('/contact', contactRouter);
+app.use('/frontitems', frontitemsRouter);
 
 
 // catch 404 and forward to error handler
