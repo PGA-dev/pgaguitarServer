@@ -1,12 +1,14 @@
 const express = require('express');
 const Contact = require('../models/contact');
+const cors = require('./cors');
 
 const contactRouter = express.Router();
 
 
 //guitar routing for Guitar Directory Page
 contactRouter.route('/')
-.get((req, res, next) => {
+.options(cors.corsWithOptions, (req, res) => res.sendStatus(200))
+.get(cors.cors, (req, res, next) => {
     Contact.find()
     .then(contact => {
         res.statusCode = 200;
@@ -15,7 +17,7 @@ contactRouter.route('/')
     })
     .catch(err => next(err));
 })
-.post((req, res, next) => {
+.post(cors.corsWithOptions, (req, res, next) => {
     Contact.create(req.body)
     .then(contact => {
         console.log('contact entry POST ', contact);
@@ -25,11 +27,11 @@ contactRouter.route('/')
     })
     .catch(err => next(err));
 })
-.put((req, res) => {
+.put(cors.corsWithOptions, (req, res) => {
     res.statusCode = 403;
     res.end('PUT operation not supported on /contact');
 })
-.delete((req, res, next) => {
+.delete(cors.corsWithOptions, (req, res, next) => {
     Contact.deleteMany()
     .then(response => {
         res.statusCode = 200;
@@ -41,7 +43,8 @@ contactRouter.route('/')
 
 //guitar Id for Guitar Detail Page
 contactRouter.route('/:contactId')
-.get((req, res, next) => {
+.options(cors.corsWithOptions, (req, res) => res.sendStatus(200))
+.get(cors.cors, (req, res, next) => {
     Contact.findById(req.params.contactId)
     .then(contact => {
         res.statusCode = 200;
@@ -50,11 +53,11 @@ contactRouter.route('/:contactId')
     })
     .catch(err => next(err));
 })
-.post((req, res) => {
+.post(cors.corsWithOptions, (req, res) => {
     res.statusCode = 403;
     res.end(`POST operation not supported on /contact/${req.params.contactId}`);
 })
-.put((req, res, next) => {
+.put(cors.corsWithOptions, (req, res, next) => {
     Contact.findByIdAndUpdate(req.params.contactId, {
         $set: req.body
     }, { new: true })
@@ -65,7 +68,7 @@ contactRouter.route('/:contactId')
     })
     .catch(err => next(err));
 })
-.delete((req, res, next) => {
+.delete(cors.corsWithOptions, (req, res, next) => {
     Contact.findByIdAndDelete(req.params.contactId)
     .then(response => {
         res.statusCode = 200;

@@ -1,5 +1,6 @@
 const express = require('express');
 const Guitar = require('../models/guitar');
+//const cors = require('./cors');
 
 const guitarRouter = express.Router();
 
