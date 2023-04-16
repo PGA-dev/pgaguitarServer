@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
+const uploadRouter = require('./routes/uploadRouter');
 
 // const passport = require('passport');
 // const authenticate = require('./authenticate');
@@ -47,6 +48,7 @@ app.use('/users', usersRouter);
 app.use('/links', linksRouter);
 app.use('/contact', contactRouter);
 app.use('/frontitems', frontitemsRouter);
+app.use('/imageUpload', uploadRouter);
 // app.use(passport.initialize());
 // app.use(passport.session());
 
