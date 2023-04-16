@@ -1,12 +1,13 @@
 const express = require('express');
 const FrontItems = require('../models/frontitems');
+const cors = require('./cors');
 
 const frontitemsRouter = express.Router();
 
 
 //Link
 frontitemsRouter.route('/')
-.get((req, res, next) => {
+.get(cors.cors, (req, res, next) => {
     FrontItems.find()
     .then(frontitems => {
         res.statusCode = 200;
@@ -15,7 +16,7 @@ frontitemsRouter.route('/')
     })
     .catch(err => next(err));
 })
-.post((req, res, next) => {
+.post(cors.corsWithOptions, (req, res, next) => {
     FrontItems.create(req.body)
     .then(frontitems => {
         console.log('frontitems Carousel entry POST ', frontitems);
@@ -25,11 +26,11 @@ frontitemsRouter.route('/')
     })
     .catch(err => next(err));
 })
-.put((req, res) => {
+.put(cors.corsWithOptions, (req, res) => {
     res.statusCode = 403;
     res.end('PUT operation not supported on /frontitems');
 })
-.delete((req, res, next) => {
+.delete(cors.corsWithOptions, (req, res, next) => {
     FrontItems.deleteMany()
     .then(response => {
         res.statusCode = 200;
@@ -41,7 +42,7 @@ frontitemsRouter.route('/')
 
 //seeder for database initial upload
 frontitemsRouter.route('/:many')
-.post((req, res, next) => {
+.post(cors.corsWithOptions, (req, res, next) => {
     FrontItems.insertMany(req.body)
     .then(frontitems => {
         console.log('link entry POST ', frontitems);
@@ -53,7 +54,7 @@ frontitemsRouter.route('/:many')
 })
 //Get and edits for individual links
 frontitemsRouter.route('/:frontitemsId')
-.get((req, res, next) => {
+.get(cors.cors, (req, res, next) => {
     FrontItems.findById(req.params.frontitemsId)
     .then(frontitems => {
         res.statusCode = 200;
@@ -62,11 +63,11 @@ frontitemsRouter.route('/:frontitemsId')
     })
     .catch(err => next(err));
 })
-.post((req, res) => {
+.post(cors.corsWithOptions, (req, res) => {
     res.statusCode = 403;
     res.end(`POST operation not supported on /frontitems/${req.params.frontitemsId}`);
 })
-.put((req, res, next) => {
+.put(cors.corsWithOptions, (req, res, next) => {
     FrontItems.findByIdAndUpdate(req.params.frontitemsId, {
         $set: req.body
     }, { new: true })
@@ -77,7 +78,7 @@ frontitemsRouter.route('/:frontitemsId')
     })
     .catch(err => next(err));
 })
-.delete((req, res, next) => {
+.delete(cors.corsWithOptions, (req, res, next) => {
     FrontItems.findByIdAndDelete(req.params.frontitemsId)
     .then(response => {
         res.statusCode = 200;
