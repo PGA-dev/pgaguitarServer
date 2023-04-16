@@ -5,6 +5,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
 
+// const passport = require('passport');
+// const authenticate = require('./authenticate');
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const linksRouter = require('./routes/linksRouter');
@@ -44,6 +47,21 @@ app.use('/users', usersRouter);
 app.use('/links', linksRouter);
 app.use('/contact', contactRouter);
 app.use('/frontitems', frontitemsRouter);
+// app.use(passport.initialize());
+// app.use(passport.session());
+
+
+// function auth(req, res, next) {
+//   console.log(req.user);
+
+//   if (!req.user) {
+//       const err = new Error('You are not authenticated!');                    
+//       err.status = 401;
+//       return next(err);
+//   } else {
+//       return next();
+//   }
+// }
 
 
 // catch 404 and forward to error handler

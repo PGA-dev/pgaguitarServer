@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "start": "set PORT=3004 && nodemon ./bin/www"
-
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -14,6 +13,9 @@
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
     "mongoose": "^5.10.9",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^6.0.1"
   }
 }
